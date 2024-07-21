@@ -23,8 +23,9 @@ Welcome to the Code Tutorial App project!
 
 ### Installation
 
-1. Use `git` to clone this repository to your development environment.
-2. Run `pnpm i` 
+1. Use `git clone https://github.com/mike-shields-dev/code-tutorial-app.git` to clone this repository to your development environment.
+2. Open up a terminal and `cd` to the root of the project
+3. Run `pnpm i` to install  
 
 You can find specific instructions in the linked READMEs below:
 
