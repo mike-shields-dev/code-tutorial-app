@@ -19,6 +19,7 @@
     "@types/node": "^20.14.11",
     "nodemon": "^3.1.4",
     "prisma": "^4.16.2",
+    "prisma-erd-generator": "^1.11.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
   },
