@@ -6,6 +6,7 @@ Author: <cite>Michael Shields</cite>
 - [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
+- [Appendix](docs/APPENDIX.md)
 
 ## Introduction
 
@@ -17,3 +18,4 @@ You can find specific instructions in the linked READMEs below:
 
 - [Frontend README](docs/README.frontend.md)
 - [Backend README](docs/README.backend.md)
+
