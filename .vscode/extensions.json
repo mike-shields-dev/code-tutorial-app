@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // ESLint
+    "esbenp.prettier-vscode", // Prettier
+    "ms-azuretools.vscode-docker", // Docker
+    "Prisma.prisma", // Prisma
+    "ms-vscode.vscode-typescript-tslint-plugin", // TypeScript TSLint
+    "timonwong.shellcheck" // Shell script linter
+  ]
+}

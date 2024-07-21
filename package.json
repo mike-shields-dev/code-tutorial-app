@@ -1,0 +1,15 @@
+{
+  "name": "fullstack-project",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"pnpm --prefix backend run dev\" \"pnpm --prefix frontend run dev\"",
+    "build": "pnpm --prefix backend run build && pnpm --prefix frontend run build"
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
