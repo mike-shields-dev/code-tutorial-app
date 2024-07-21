@@ -1,16 +1,19 @@
-# Code Tutorial App (Working Title)
-Author: Michael Shields
+<h1>Code Tutorial App</h1>
+Author: <cite>Michael Shields</cite>
 
-- [Code Tutorial App (Working Title)](#code-tutorial-app-working-title)
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
-- [Backend](#backend)
-  - [Schema](#schema)
-- [Frontend](#frontend)
+- [Getting Started](#getting-started)
 
-# Introduction
+## Introduction
 
-# Backend
+Welcome to the Code Tutorial App project!
 
-## Schema
+## Getting Started
 
-# Frontend
+You can find specific instructions in the linked READMEs below:
+
+- [Frontend README](docs/README.frontend.md)
+- [Backend README](docs/README.backend.md)
