@@ -60,7 +60,7 @@ The application can be started in 3 modes: **Development**, **Test** & **Product
 
 ### Compiling the App
 
-Run `pnpm build` to compile/build the app, which in turn will run the build scripts in `backend/package.json` and `frontend/packages.json`  
+Run `pnpm build` to compile/build the app, which in turn will run the build scripts in `backend/package.json` and `frontend/package.json`  
 
 You can find specific instructions in the linked READMEs below:
 
