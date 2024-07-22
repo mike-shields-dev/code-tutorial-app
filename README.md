@@ -10,6 +10,7 @@ Author: <cite>Michael Shields</cite>
   - [Installation](#installation)
   - [Project Structure](#project-structure)
   - [Starting the App](#starting-the-app)
+  - [Compiling the App](#compiling-the-app)
 
 ## Introduction
 
@@ -55,7 +56,11 @@ The application can be started in 3 modes: **Development**, **Test** & **Product
 
 - Development Mode: `pnpm dev`
 - Test Mode: `pnpm test` 
-- Production Mode: `pnpm start` 
+- Production Mode: `pnpm start`
+
+### Compiling the App
+
+Run `pnpm build` to compile/build the app, which in turn will run the build scripts in `backend/package.json` and `frontend/packages.json`  
 
 You can find specific instructions in the linked READMEs below:
 
