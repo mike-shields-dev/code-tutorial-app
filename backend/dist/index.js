@@ -29,12 +29,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const data_source_1 = require("./data-source");
 const app_1 = __importDefault(require("./app"));
 const dotenv = __importStar(require("dotenv"));
-dotenv.config({ path: process.env.ENV_FILE || '.env.test' });
+const path_1 = __importDefault(require("path"));
+// Check if ENV_FILE is set
+const envFile = process.env.ENV_FILE ? path_1.default.resolve(__dirname, process.env.ENV_FILE) : path_1.default.resolve(__dirname, '../.env.production');
+dotenv.config({ path: envFile });
+console.log(`Loading environment variables from: ${envFile}`);
 data_source_1.AppDataSource.initialize()
     .then(() => {
     console.log("Database connection established.");
     const PORT = process.env.EXPRESS_PORT || 5000;
     app_1.default.listen(PORT, () => {
+        console.log(`Mode: ${process.env.NODE_ENV}`);
         console.log("Express is running on port " + PORT);
     });
 })

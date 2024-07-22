@@ -1,10 +1,10 @@
-import { AppDataSource } from "./data-source";
-import app from "./app";
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 import path from "path";
+import { AppDataSource } from "../src/data-source";
+import app from "../src/app";
 
 // Check if ENV_FILE is set
-const envFile = process.env.ENV_FILE ? path.resolve(__dirname, process.env.ENV_FILE) : path.resolve(__dirname, '../.env.production');
+const envFile = process.env.ENV_FILE ? path.resolve(__dirname, process.env.ENV_FILE) : path.resolve(__dirname, '../../.env.test');
 dotenv.config({ path: envFile });
 
 console.log(`Loading environment variables from: ${envFile}`);

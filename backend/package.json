@@ -2,10 +2,10 @@
   "name": "code_tutorial_app_api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node scripts/dev.js",
-    "start": "cross-env ENV_FILE=.env.production npm run build && node dist/index.js",
+    "dev": "cross-env ENV_FILE=../../.env.development ts-node scripts/dev.ts",
+    "start": "tsc && cross-env ENV_FILE=.env.production node dist/index.js",
     "build": "tsc",
-    "test": "node scripts/test.js"
+    "test": "cross-env ENV_FILE=../../.env.test ts-node scripts/test.ts"
   },
   "dependencies": {
     "cross-env": "^7.0.3",
@@ -21,8 +21,5 @@
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
-  },
-  "prisma": {
-    "schema": "src/prisma/schema.prisma"
   }
 }

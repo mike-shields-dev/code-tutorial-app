@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "concurrently \"pnpm --prefix backend run dev\" \"pnpm --prefix frontend run dev\"",
     "test": "concurrently \"pnpm --prefix backend run test\" \"pnpm --prefix frontend run test\"",
-    "build": "pnpm --prefix backend run build && pnpm --prefix frontend run build"
+    "build": "pnpm --prefix backend run build && pnpm --prefix frontend run build",
+    "start": "concurrently \"pnpm --prefix backend run start\" \"pnpm --prefix frontend run build && pnpm --prefix frontend run start\""
   },
   "devDependencies": {
     "concurrently": "^6.2.1"

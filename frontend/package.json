@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "docker-up": "docker-compose up -d"
+    "test": "jest"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",

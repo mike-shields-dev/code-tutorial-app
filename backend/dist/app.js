@@ -14,8 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("reflect-metadata");
+const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config({ path: process.env.ENV_FILE || '.env.test' });
+// Load environment variables from the specified file
+const envFile = path_1.default.resolve(__dirname, process.env.ENV_FILE);
+dotenv_1.default.config({ path: envFile });
 const PORT = process.env.EXPRESS_PORT || 5000;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());

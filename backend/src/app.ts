@@ -1,7 +1,11 @@
-import express from 'express';
-import 'reflect-metadata';
-import dotenv from 'dotenv';
-dotenv.config({ path: process.env.ENV_FILE || '.env.test' });
+import express from "express";
+import "reflect-metadata";
+import path from "path";
+import dotenv from "dotenv";
+
+// Load environment variables from the specified file
+const envFile = path.resolve(__dirname, process.env.ENV_FILE!);
+dotenv.config({ path: envFile });
 
 const PORT = process.env.EXPRESS_PORT || 5000;
 
