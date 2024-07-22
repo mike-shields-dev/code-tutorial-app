@@ -1,15 +1,14 @@
 import { DataSource } from 'typeorm';
 import { Tutorial, Lesson } from './entities';
 
-const { POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASS, POSTGRES_DB } = process.env;
+import dotenv from 'dotenv';
+dotenv.config({ path: process.env.ENV_FILE || '.env.test' });
+
+const { POSTGRES_URL } = process.env;
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
-  host: 'localhost',
-  port: parseInt(POSTGRES_PORT!) || 5432,
-  username: POSTGRES_USER,
-  password: POSTGRES_PASS,
-  database: POSTGRES_DB,
+  url: POSTGRES_URL,  // Use the URL directly from the .env file
   synchronize: true,
   logging: false,
   entities: [Tutorial, Lesson],

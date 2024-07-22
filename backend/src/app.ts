@@ -1,5 +1,7 @@
 import express from 'express';
 import 'reflect-metadata';
+import dotenv from 'dotenv';
+dotenv.config({ path: process.env.ENV_FILE || '.env.test' });
 
 const PORT = process.env.EXPRESS_PORT || 5000;
 

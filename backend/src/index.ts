@@ -1,5 +1,7 @@
 import { AppDataSource } from './data-source';
 import app from './app';
+import * as dotenv from 'dotenv'
+dotenv.config({ path: process.env.ENV_FILE || '.env.test' })
 
 AppDataSource.initialize()
   .then(() => {
