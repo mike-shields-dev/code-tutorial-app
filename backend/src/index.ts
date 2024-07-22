@@ -1,18 +1,17 @@
-import express from 'express';
-import db from './prisma/prismaClient';
-import { Tutorial } from '@prisma/client';
+import { AppDataSource } from './data-source';
+import app from './app';
 
-const PORT = process.env.EXPRESS_PORT || 3000
-
-const app = express();
-app.use(express.json());
-
-app.get('/api/tutorials', async (req, res) => {
-  const tutorials: Tutorial[] = await db.tutorial.findMany();
-  res.json(tutorials);
-});
-
-app.listen(PORT, () => {
-  // console.log("NODE_ENV=" + process.env.NODE_ENV);
-  console.log('Server is running on port ' + PORT);
-});
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Database connection established.");
+    
+    const PORT = process.env.EXPRESS_PORT || 5000;
+    app.listen(PORT, () => {
+      console.log("Express is running on port " + PORT);
+    });
+    
+  })
+  .catch((err) => {
+    console.error("Error initializing database connection:", err);
+    process.exit(1);
+  });
