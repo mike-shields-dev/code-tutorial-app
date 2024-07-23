@@ -2,10 +2,11 @@
   "name": "code_tutorial_app_api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "cross-env ENV_FILE=../../.env.development ts-node scripts/dev.ts",
-    "start": "tsc && cross-env ENV_FILE=.env.production node dist/index.js",
+    "docker:up": "docker-compose up -d",
+    "dev": "pnpm docker:up && cross-env NODE_ENV=development ts-node scripts/dev.ts",
+    "start": "tsc && cross-env NODE_ENV=production node dist/index.js",
     "build": "tsc",
-    "test": "cross-env ENV_FILE=../../.env.test ts-node scripts/test.ts"
+    "test": "cross-env NODE_ENV=test ts-node scripts/test.ts"
   },
   "dependencies": {
     "cross-env": "^7.0.3",

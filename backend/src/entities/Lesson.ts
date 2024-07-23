@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class Lesson {
+export class Lesson implements ILesson {
     @PrimaryGeneratedColumn()
     id!: number; // The primary key, auto-incremented
 
@@ -9,7 +9,7 @@ export class Lesson {
     title!: string; // Column for lesson title
 
     @Column()
-    isActive!: boolean; // Column to indicate if the lesson is active
+    is_available!: boolean; // Column to indicate if the lesson is active
 
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt!: Date; // Column to store creation date with default value

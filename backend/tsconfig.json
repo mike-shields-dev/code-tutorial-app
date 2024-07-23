@@ -8,8 +8,8 @@
     "lib": ["ES6"],
     "outDir": "./dist",
     "baseUrl": ".",
-    "typeRoots": ["../types", "./node_modules/@types"]
+    "types": ["node", "global"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "types/**/*"],
   "exclude": ["node_modules", "dist"]
 }

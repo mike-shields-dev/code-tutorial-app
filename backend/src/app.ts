@@ -2,20 +2,21 @@ import express from "express";
 import "reflect-metadata";
 import path from "path";
 import dotenv from "dotenv";
+import tutorialsRoute from "./routes/tutorialsRoute";
 
-// Load environment variables from the specified file
-const envFile = path.resolve(__dirname, process.env.ENV_FILE!);
-dotenv.config({ path: envFile });
+const envFilename = `.env.${process.env.NODE_ENV}`;
+const envFilePath = path.resolve(process.cwd(), envFilename);
+dotenv.config({ path: envFilePath });
 
 const PORT = process.env.EXPRESS_PORT || 5000;
 
 const app = express();
+
+// Middleware
 app.use(express.json());
 
-app.get("/api/tutorials", async (req, res) => {
-  // Example placeholder response
-  res.json("tutorials");
-});
+// Routes
+app.use("/tutorials", tutorialsRoute);
 
 export default app;
 

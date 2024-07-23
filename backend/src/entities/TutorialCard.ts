@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Tutorial implements ITutorial {
+export class TutorialCard implements ITutorialCard {
   @PrimaryGeneratedColumn()
   id!: number;
 
@@ -12,7 +12,10 @@ export class Tutorial implements ITutorial {
   description!: string;
 
   @Column()
-  is_available!: boolean;
+  imgSrc?: string | undefined;
+
+  @Column()
+  imgAlt?: string | undefined;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt!: Date;

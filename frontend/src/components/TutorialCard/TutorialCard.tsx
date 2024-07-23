@@ -1,13 +1,19 @@
 import Card from "@/components/Card/Card";
-import { getTutorialCardConfig } from "@/utils/localFileSystemMethods";
 import Image from "next/image";
 
-interface TutorialCardProps {
-  tutorialID: string;
+async function fetchTutorialCard(
+  tutorialID: number
+) {
+  const response = await fetch(`https://localhost:5000/tutorialCardInfo/${tutorialID}`);
+  const cardInfo: ITutorialCard = await response.json();
+  return cardInfo;
 }
 
+interface TutorialCardProps {
+  tutorialID: number;
+}
 async function TutorialCard({ tutorialID }: TutorialCardProps) {
-  const { title, description, imgSrc, imgAlt } = await getTutorialCardConfig(
+  const { title, description, imgSrc, imgAlt } = await fetchTutorialCard(
     tutorialID
   );
   return (
