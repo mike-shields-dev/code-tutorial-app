@@ -12,7 +12,7 @@ export class Tutorial implements ITutorial {
   description!: string;
 
   @Column()
-  is_available!: boolean;
+  is_active!: boolean;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt!: Date;

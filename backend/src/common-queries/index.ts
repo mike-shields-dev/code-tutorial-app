@@ -13,19 +13,14 @@ import { AppDataSource } from "../data-source";
  * @param res { Response }
  * @param entity { EntityTarget<ObjectLiteral> }
  */
-export const readAll = async (
-  req: Request,
-  res: Response,
-  entity: EntityTarget<ObjectLiteral>
-) => {
+export const readAll = async (entity: EntityTarget<ObjectLiteral>) => {
   try {
     const repository = AppDataSource.getRepository(entity);
     const items = await repository.find();
 
-    res.json(items);
+    return items;
   } catch (error) {
-    console.error("Error fetching data:", error);
-    res.status(500).json({ error: "Internal server error" });
+    throw new Error("Internal server error");
   }
 };
 
@@ -55,8 +50,11 @@ export const readOne = async (
     });
 
     if (!result) {
-      res.status(404).json({ error: `${entity} with ID: ${id} not found`});
+      return res
+        .status(404)
+        .json({ error: `${entity} with ID: ${id} not found` });
     }
+
     res.json(result);
   } catch (err) {
     res.status(500).json({ error: "Internal Server Error" });

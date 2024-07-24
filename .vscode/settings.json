@@ -1,3 +1,13 @@
 {
-  "cSpell.words": ["cliui", "datasources", "fullwidth", "typeorm", "yargs", "pnpm"]
+  "cSpell.words": [],
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders",
+    "pnpm-lock.yaml",
+    "package.json"
+  ]
 }

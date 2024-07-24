@@ -2,7 +2,8 @@ import express from "express";
 import "reflect-metadata";
 import path from "path";
 import dotenv from "dotenv";
-import tutorialsRoute from "./routes/tutorialsRoute";
+import cors from "cors";
+import tutorialsRoute from "./routes/tutorials";
 
 const envFilename = `.env.${process.env.NODE_ENV}`;
 const envFilePath = path.resolve(process.cwd(), envFilename);
@@ -14,6 +15,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.use("/tutorials", tutorialsRoute);

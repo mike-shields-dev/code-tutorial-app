@@ -4,14 +4,14 @@ declare global {
    *
    * @property {number} [id] - The unique identifier of the tutorial.
    * @property {string} title - The title of the tutorial.
-   * @property {boolean} is_available - Whether the tutorial is currently available.
+   * @property {boolean} is_active - Whether the tutorial is currently active.
    * @property {Date} [createdAt] - The date and time when the tutorial was created.
    */
   interface ITutorial {
     id?: number;
     title: string;
     description: string;
-    is_available: boolean;
+    is_active: boolean;
     createdAt?: Date;
   }
 
@@ -20,13 +20,13 @@ declare global {
    *
    * @property {number} [id] - The unique identifier of the lesson.
    * @property {string} title - The title of the lesson.
-   * @property {boolean} is_available - Whether the lesson is currently available.
+   * @property {boolean} is_active - Whether the lesson is currently available.
    * @property {Date} [createdAt] - The date and time when the lesson was created.
    */
   interface ILesson {
     id?: number;
     title: string;
-    is_available: boolean;
+    is_active: boolean;
     createdAt?: Date;
   }
 

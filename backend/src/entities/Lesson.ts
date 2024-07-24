@@ -9,7 +9,7 @@ export class Lesson implements ILesson {
     title!: string; // Column for lesson title
 
     @Column()
-    is_available!: boolean; // Column to indicate if the lesson is active
+    is_active!: boolean; // Column to indicate if the lesson is active
 
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     createdAt!: Date; // Column to store creation date with default value

@@ -1,10 +1,6 @@
 import { AppDataSource } from "../src/data-source"; // Adjust the path as necessary
 import { Tutorial } from "../src/entities"; // Adjust the path as necessary
 
-const env = process.env.NODE_ENV;
-
-console.log({ env });
-
 const seedDatabase = async () => {
   try {
     await AppDataSource.initialize();
@@ -17,7 +13,7 @@ const seedDatabase = async () => {
       CREATE TABLE tutorial (
         id SERIAL PRIMARY KEY,
         title VARCHAR NOT NULL,
-        is_available BOOLEAN NOT NULL,
+        is_active BOOLEAN NOT NULL,
         description VARCHAR NOT NULL,
         "createdAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       )
@@ -31,24 +27,24 @@ const seedDatabase = async () => {
         title: "Introduction to HTML",
         description:
           "Learn how HTML is used to define the structure of web pages.",
-        is_available: true,
+        is_active: true,
       },
       {
         title: "CSS Basics",
         description:
           "Learn how to target DOM elements and change how they look.",
-        is_available: true,
+        is_active: true,
       },
       {
         title: "JavaScript Fundamentals",
         description: "Learn how to add interactivity to your web applications.",
-        is_available: true,
+        is_active: true,
       },
       {
         title: "TypeScript for Beginners",
         description:
           "Learn how typescript can help you to catch bugs and create large scale projects.",
-        is_available: true,
+        is_active: true,
       },
     ];
 
@@ -58,7 +54,7 @@ const seedDatabase = async () => {
       await tutorialRepository.save(newTutorial);
     }
 
-    console.log("Database seeded successfully");
+    console.log(`${process.env.POSTGRES_DATABASE} database seeded successfully`);
     await queryRunner.release();
     await AppDataSource.destroy();
   } catch (error) {
