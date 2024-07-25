@@ -2,7 +2,7 @@
   "name": "fullstack-project",
   "private": true,
   "scripts": {
-    "dev": "concurrently --names 'backend,frontend' --prefix-colors 'bgBlue.bold,bgGreen.bold' \"pnpm --prefix backend run dev\" \"pnpm --prefix frontend run dev\"",
+    "dev": "concurrently --names 'backend,frontend' --prefix-colors 'bgMagenta.bold,bgCyan.bold' \"pnpm --prefix backend run dev\" \"pnpm --prefix frontend run dev\"",
     "test": "concurrently --names 'backend,frontend' --prefix-colors 'bgBlue.bold,bgGreen.bold' \"pnpm --prefix backend run test\" \"pnpm --prefix frontend run test\"",
     "build": "pnpm --prefix backend run build && pnpm --prefix frontend run build",
     "start": "concurrently --names 'backend,frontend' --prefix-colors 'bgBlue.bold,bgGreen.bold' \"pnpm --prefix backend run start\" \"pnpm --prefix frontend run build && pnpm --prefix frontend run start\""
