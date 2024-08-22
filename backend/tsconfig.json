@@ -13,5 +13,5 @@
     "types": ["node", "jest", "../types/global.d.ts"]
   },
   "include": ["src/**/*.ts", "__tests__/**/*.ts"],
-  "exclude": ["node_modules", "./dist", "./coverage", "jest.config.js"]
+  "exclude": ["node_modules", "./dist", "./coverage", "jest.config.js", "jest.setup.js", "__tests__"]
 }
