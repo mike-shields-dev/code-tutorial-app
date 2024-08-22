@@ -3,15 +3,14 @@ import { Request, Response } from "express";
 import { readAll } from "../../common-queries/index";
 import { AppDataSource } from "../../data-source";
 
-const readAllTutorials = async (req: Request, res: Response) =>
-  readAll(Tutorial);
+const readAllTutorials = async (req: Request, res: Response) => await readAll(req, res, Tutorial);
 
-const readActiveTutorials = async (req: Request, res: Response) => {
+const readPublishedTutorials = async (req: Request, res: Response) => {
   try {
     const repository = AppDataSource.getRepository(Tutorial);
     const activeTutorials = await repository.find({
       where: {
-        is_active: true,
+        is_published: true,
       },
     });
 
@@ -25,4 +24,4 @@ const readActiveTutorials = async (req: Request, res: Response) => {
   }
 };
 
-export { readAllTutorials, readActiveTutorials };
+export { readAllTutorials, readPublishedTutorials };

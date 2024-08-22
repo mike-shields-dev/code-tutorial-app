@@ -11,7 +11,7 @@ declare global {
     id?: number;
     title: string;
     description: string;
-    is_active: boolean;
+    is_published: boolean;
     createdAt?: Date;
   }
 
@@ -26,7 +26,7 @@ declare global {
   interface ILesson {
     id?: number;
     title: string;
-    is_active: boolean;
+    is_published: boolean;
     createdAt?: Date;
   }
 

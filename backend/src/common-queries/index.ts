@@ -13,19 +13,29 @@ import { AppDataSource } from "../data-source";
  * @param res { Response }
  * @param entity { EntityTarget<ObjectLiteral> }
  */
-export const readAll = async (entity: EntityTarget<ObjectLiteral>) => {
+export const readAll = async (
+  req: Request,
+  res: Response,
+  entity: EntityTarget<ObjectLiteral>
+) => {
   try {
     const repository = AppDataSource.getRepository(entity);
     const items = await repository.find();
 
-    return items;
+    if (items) {
+      return res.status(200).json(items);
+    }
+
+    return res.status(404).json({ error: "No items found" });
+    
   } catch (error) {
-    throw new Error("Internal server error");
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
 /**
- *
+ * @description Retrieves a single row from the database table associated with,
+ * the provided entity, using the ID provided in the request parameters.
  * @param req { Request }
  * @param res { Response }
  * @param entity { EntityTarget<ObjectLiteral> }
@@ -56,7 +66,7 @@ export const readOne = async (
     }
 
     res.json(result);
-  } catch (err) {
+  } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };

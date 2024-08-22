@@ -7,13 +7,17 @@ const Card = ({ children, ...props }: CardProps) => {
 };
 
 interface TitleProps extends HTMLAttributes<HTMLHeadingElement> {}
-Card.Title = ({ children, ...props }: TitleProps) => (
+const Title = ({ children, ...props }: TitleProps) => (
   <h2 {...props}>{children}</h2>
 );
 
 interface DescriptionProps extends HTMLAttributes<HTMLParagraphElement> {}
-Card.Description = ({ children, ...props }: DescriptionProps) => (
+const Description = ({ children, ...props }: DescriptionProps) => (
   <p {...props}>{children}</p>
 );
+
+
+Card.Title = Title;
+Card.Description = Description;
 
 export default Card;
