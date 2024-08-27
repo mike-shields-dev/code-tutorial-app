@@ -1,11 +1,8 @@
 import { AppDataSource } from "./data-source";
 import app from "./app";
 import dotenv from "dotenv";
-import path from "path";
 
-const envFilename = `.env.${process.env.NODE_ENV}`;
-const envFilePath = path.resolve(__dirname, envFilename);
-dotenv.config({ path: envFilePath });
+dotenv.config();
 
 const PORT = process.env.EXPRESS_PORT || 5000;
 

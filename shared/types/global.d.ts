@@ -4,10 +4,10 @@ declare global {
    *
    * @property {number} [id] - The unique identifier of the tutorial.
    * @property {string} title - The title of the tutorial.
-   * @property {boolean} is_active - Whether the tutorial is currently active.
+   * @property {boolean} is_published - Whether the tutorial is currently active.
    * @property {Date} [createdAt] - The date and time when the tutorial was created.
    */
-  interface ITutorial {
+  export interface ITutorial {
     id?: number;
     title: string;
     description: string;
@@ -20,7 +20,7 @@ declare global {
    *
    * @property {number} [id] - The unique identifier of the lesson.
    * @property {string} title - The title of the lesson.
-   * @property {boolean} is_active - Whether the lesson is currently available.
+   * @property {boolean} is_published - Whether the lesson is currently available.
    * @property {Date} [createdAt] - The date and time when the lesson was created.
    */
   interface ILesson {
@@ -37,7 +37,7 @@ declare global {
    * @property {string} name - The name of the topic.
    * @property {Date} [createdAt] - The date and time when the topic was created.
    */
-  interface ITopic {
+  export interface ITopic {
     id?: number;
     name: string;
     createdAt?: Date;
@@ -53,7 +53,7 @@ declare global {
    * @property {boolean} hasFileExplorer - Whether the lesson uses the File Explorer UI.
    * @property {boolean} hasInstructions - Whether the lesson uses the Instructions UI.
    */
-  interface ILessonConfig {
+  export interface ILessonConfig {
     hasWebContainer: boolean;
     hasBrowser: boolean;
     hasCodeEditor: boolean;

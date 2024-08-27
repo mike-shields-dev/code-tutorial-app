@@ -9,9 +9,20 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "./dist",
-    "rootDir": "./src",
-    "types": ["node", "jest", "../types/global.d.ts"]
+    "rootDir": "../",
+    "types": ["node", "jest", "global"],
+    "typeRoots": ["./node_modules/@types", "../shared/types"],
   },
-  "include": ["src/**/*.ts", "__tests__/**/*.ts"],
-  "exclude": ["node_modules", "./dist", "./coverage", "jest.config.js", "jest.setup.js", "__tests__"]
+  "include": [
+    "src/**/*.ts",
+    "__tests__/**/*.ts",
+    "../shared/types/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "./dist",
+    "./coverage",
+    "jest.config.js",
+    "jest.setup.js"
+  ]
 }

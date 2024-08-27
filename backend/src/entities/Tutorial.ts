@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, JoinTable, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Lesson } from "./Lesson";
 @Entity()
 export class Tutorial implements ITutorial {
   @PrimaryGeneratedColumn()
@@ -16,4 +16,7 @@ export class Tutorial implements ITutorial {
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   createdAt!: Date;
+
+  @OneToMany(() => Lesson, (lesson) => lesson.tutorial)
+  lessons!: Lesson[];
 }

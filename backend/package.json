@@ -2,12 +2,13 @@
   "name": "code_tutorial_app_api",
   "version": "1.0.0",
   "scripts": {
-    "docker:dev": "docker-compose up -d && scripts/wait-for-docker.sh .env.development",
-    "docker:test": "docker-compose up -d && scripts/wait-for-docker.sh .env.test",
-    "dev": "pnpm docker:dev && cross-env NODE_ENV=development ts-node scripts/seedDb.ts && cross-env NODE_ENV=development nodemon src/index.ts",
+    "docker": "docker-compose up -d",
+    "docker:dev": "pnpm docker && cross-env NODE_ENV=development ./scripts/init_db.sh && ts-node ./scripts/seedDb.ts",
+    "docker:test": "pnpm docker && cross-env NODE_ENV=test ./scripts/init_db.sh",
+    "dev": "pnpm docker:dev && nodemon src/index.ts",
     "start": "pnpm build && cross-env NODE_ENV=production node dist/index.js",
     "build": "echo 'Building backend...' && tsc",
-    "test": "pnpm docker:test && cross-env NODE_ENV=test jest --coverage --detectOpenHandles"
+    "test": "pnpm docker:test && jest --coverage --detectOpenHandles"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,6 +19,7 @@
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@jest/globals": "^29.7.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.12",

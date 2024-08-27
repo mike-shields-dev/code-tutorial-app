@@ -1,16 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Tutorial } from "./Tutorial";
 
 @Entity()
 export class Lesson implements ILesson {
   @PrimaryGeneratedColumn()
-  id!: number; // The primary key, auto-incremented
+  id!: number;
 
   @Column("text")
-  title!: string; // Column for lesson title
+  title!: string;
 
   @Column()
-  is_published!: boolean; // Column to indicate if the lesson is active
+  is_published!: boolean;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
-  createdAt!: Date; // Column to store creation date with default value
+  createdAt!: Date;
+
+  @ManyToOne(() => Tutorial, (tutorial) => tutorial.lessons)
+  tutorial!: Tutorial;
 }

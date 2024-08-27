@@ -19,15 +19,9 @@ export const readAll = async (
   entity: EntityTarget<ObjectLiteral>
 ) => {
   try {
-    const repository = AppDataSource.getRepository(entity);
-    const items = await repository.find();
+    const items = await AppDataSource.getRepository(entity).find();
 
-    if (items) {
-      return res.status(200).json(items);
-    }
-
-    return res.status(404).json({ error: "No items found" });
-    
+    return res.status(200).json(items);
   } catch (error) {
     return res.status(500).json({ error: "Internal Server Error" });
   }

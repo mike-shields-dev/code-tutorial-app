@@ -8,5 +8,5 @@ module.exports = {
   testMatch: ["**/__tests__/**/*.test.(ts|js)"],
   collectCoverage: true,
   coverageReporters: ["text", "lcov"],
-  setupFilesAfterEnv: ["./jest.setup.ts"] // This should be setupFiles or setupFilesAfterEnv
+  setupFilesAfterEnv: ["./jest.setup.ts"]
 };

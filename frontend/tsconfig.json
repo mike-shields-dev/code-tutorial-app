@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "lib": [
       "dom",
@@ -27,7 +26,9 @@
         "src/*"
       ]
     },
-    "module": "esnext"
+    "module": "esnext",
+    "types": ["node", "jest", "global"], 
+    "typeRoots": ["./node_modules/@types", "../shared/types"],
   },
   "include": [
     "../types",
