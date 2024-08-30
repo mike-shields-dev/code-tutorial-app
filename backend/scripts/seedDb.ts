@@ -2,14 +2,21 @@ import { DataSource } from "typeorm";
 import { AppDataSource } from "../src/data-source";
 import { Lesson, Tutorial } from "../src/entities";
 
+seedDatabase(AppDataSource);
+
 export async function seedDatabase(appDataSource: DataSource) {
-  try {    
+  try {
+    if (!appDataSource.isInitialized) {
+      await appDataSource.initialize();
+      await appDataSource.synchronize();
+    }
+
     // Get repositories
     const tutorialRepository = AppDataSource.getRepository(Tutorial);
     const lessonRepository = AppDataSource.getRepository(Lesson);
 
     // Define tutorials data
-    const tutorialsData = [
+    const dummyData = [
       {
         title: "Introduction to HTML",
         description:
@@ -60,26 +67,27 @@ export async function seedDatabase(appDataSource: DataSource) {
     ];
 
     // Create tutorials and their lessons
-    for (const tutorialData of tutorialsData) {
+    for (const tutorial of dummyData) {
       // Create and save the tutorial
-      const tutorial = tutorialRepository.create({
-        title: tutorialData.title,
-        description: tutorialData.description,
-        is_published: tutorialData.is_published,
+      const tutorialEntry = tutorialRepository.create({
+        title: tutorial.title,
+        description: tutorial.description,
+        is_published: tutorial.is_published,
       });
-      await tutorialRepository.save(tutorial);
+      await tutorialRepository.save(tutorialEntry);
 
       // Create and save the lessons for the current tutorial
-      const lessons = tutorialData.lessons.map((lessonData) => {
-        const lesson = lessonRepository.create({
+      const lessonEntries = tutorial.lessons.map((lessonData) => {
+        const lessonEntry = lessonRepository.create({
           title: lessonData.title,
           is_published: lessonData.is_published,
-          tutorial, // Associate this lesson with the current tutorial
+          tutorial: tutorialEntry, // Associate this lesson with the current tutorial
         });
-        return lesson;
+
+        return lessonEntry;
       });
 
-      await lessonRepository.save(lessons); // Save all lessons at once
+      await lessonRepository.save(lessonEntries); // Save all lessons at once
     }
 
     console.log("Database seeded successfully");

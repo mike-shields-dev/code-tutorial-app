@@ -19,17 +19,19 @@ if (NODE_ENV === "development") {
   password = process.env.TEST_DB_PASSWORD || "";
   database = process.env.TEST_DB_NAME || "";
 } else if (NODE_ENV === "production") {
-  // TODO: Production database credentials
+  username = process.env.PROD_DB_USER || "";
+  password = process.env.PROD_DB_PASSWORD || "";
+  database = process.env.PROD_DB_NAME || "";
 }
 
 if (!username || !password || !database) {
-  throw new Error("Database credentials not found");
+  throw new Error(`Database credentials not found for ${NODE_ENV} environment`);
 }
 
 export const AppDataSource = new DataSource({
   type: "postgres",
   url: `postgres://${username}:${password}@localhost:5432/${database}`,
-  synchronize: NODE_ENV !== "production", // Only synchronize if not in production
-  logging: false,
+  synchronize: NODE_ENV !== "production", // Avoid schema sync in production
+  logging: NODE_ENV === "development", // Enable logging in development
   entities: [Tutorial, Lesson],
 });
