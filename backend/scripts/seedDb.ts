@@ -12,6 +12,23 @@ export async function seedDatabase(appDataSource: DataSource) {
       await appDataSource.synchronize();
     }
 
+    const queryRunner = appDataSource.createQueryRunner();
+
+    try {
+      await queryRunner.startTransaction();
+
+      // Truncate tables with CASCADE to handle foreign key constraints
+      await queryRunner.query(`TRUNCATE TABLE "lesson" CASCADE`);
+      await queryRunner.query(`TRUNCATE TABLE "tutorial" CASCADE`);
+
+      await queryRunner.commitTransaction();
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+      throw err;
+    } finally {
+      await queryRunner.release();
+    }
+
     // Get repositories
     const tutorialRepository = AppDataSource.getRepository(Tutorial);
     const lessonRepository = AppDataSource.getRepository(Lesson);

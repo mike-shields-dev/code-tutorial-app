@@ -1,4 +1,3 @@
-// Define tutorials data
 const dummyData = [
   {
     title: "Introduction to HTML",
