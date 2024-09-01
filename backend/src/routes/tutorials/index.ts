@@ -1,38 +1,29 @@
 import { Router } from "express";
 import { Request, Response } from "express";
-import {
-  createOneTutorial,
-  readAllTutorials,
-  readPublishedTutorials,
-  readUnpublishedTutorials,
-} from "../../controllers/tutorialController";
-import isTutorial from "../../../../shared/type_guards/isTutorial";
+import { TutorialController } from "../../controllers/tutorialController";
 
 const tutorialsRouter = Router();
+const tutorialController = new TutorialController();
 
 tutorialsRouter.post("/", async (req: Request, res: Response) => {
-  const tutorial = req.body;
-
-  if (!isTutorial(tutorial)) {
-    return res.status(400).json({
-      message: "Validation failed! Required fields: title (non-empty string), description (non-empty string) is_published (boolean)"
-    });
-  }
-
-  return await createOneTutorial(req, res);
+  return await tutorialController.createOne(req, res);
 });
 
 tutorialsRouter.route("/").get(async (req: Request, res: Response) => {
   if (!("is_published" in req.query)) {
-    return await readAllTutorials(req, res);
+    return await tutorialController.readAll(req, res);
   }
 
   if (req.query.is_published === "true") {
-    return await readPublishedTutorials(req, res);
+    return await tutorialController.readPublished(req, res);
   }
 
   if (req.query.is_published === "false") {
-    return await readUnpublishedTutorials(req, res);
+    return await tutorialController.readUnpublished(req, res);
+  }
+
+  if("id" in req.query){
+    return await tutorialController.readOne(req, res);
   }
 });
 

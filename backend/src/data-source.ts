@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Tutorial, Lesson } from "./entities";
+import { Tutorial, Lesson, Topic} from "./entities";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -33,5 +33,5 @@ export const AppDataSource = new DataSource({
   url: `postgres://${username}:${password}@localhost:5432/${database}`,
   synchronize: NODE_ENV !== "production", // Avoid schema sync in production
   logging: NODE_ENV === "development", // Enable logging in development
-  entities: [Tutorial, Lesson],
+  entities: [Tutorial, Lesson, Topic],
 });

@@ -1,4 +1,3 @@
-import { Tutorial } from "./Tutorial"
-import { Lesson } from "./Lesson"
-
-export { Tutorial, Lesson }
+export { Tutorial } from "./Tutorial"
+export { Lesson } from "./Lesson"
+export { Topic } from "./Topic"

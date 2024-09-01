@@ -6,6 +6,10 @@ declare global {
    * @property {string} title - The title of the tutorial.
    * @property {boolean} is_published - Whether the tutorial is currently active.
    * @property {Date} [createdAt] - The date and time when the tutorial was created.
+   * @property {string[]} tags - An array of tags associated with the tutorial.
+   * @property {ILesson[]} lessons - An array of lessons in the tutorial.
+   * @property {ILevel} level - The level of difficulty of the tutorial.
+   * @property {ITopic[]} topics - An array of topics associated with the tutorial.
    */
   export interface ITutorial {
     id?: number;
@@ -13,7 +17,17 @@ declare global {
     description: string;
     is_published: boolean;
     createdAt?: Date;
+    topics: ITopic[];
+    level: ILevel;
+    lessons: ILesson[];
   }
+
+  /**
+   * @description Represents a level of difficulty for a tutorial.
+   *
+   * @property {string} - A choice of "beginner", "intermediate", or "advanced".
+   */
+  export type ILevel = ("beginner" | "intermediate" | "advanced"); 
 
   /**
    * @description Represents a lesson in the system.
@@ -23,7 +37,7 @@ declare global {
    * @property {boolean} is_published - Whether the lesson is currently available.
    * @property {Date} [createdAt] - The date and time when the lesson was created.
    */
-  interface ILesson {
+  export interface ILesson {
     id?: number;
     title: string;
     is_published: boolean;
