@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Creates the development or test database and associated users, 
-# based on the NODE_ENV environment variable.
+# Creates the development or test database and associated users,
+# based on the NODE_ENV environment variable (development or test).
 # The .env file must be present in the root directory
-# The .env file must contain the following variables:
+# and contain the following variables:
 
 #   PGPASSWORD (PostgreSQL admin password)
 
@@ -15,7 +15,6 @@
 #   TEST_DB_PASSWORD (Test database password)
 #   TEST_DB_NAME (Test database name)
 
-
 # Check that the .env file exists
 if [ ! -f .env ]; then
     echo "No .env file found!"
@@ -25,12 +24,13 @@ fi
 # Load the .env file variables
 export $(cat .env | xargs)
 
-# Wait for PostgreSQL to be ready
+# Wait for PostgreSQL (in docker container) to be ready
 until pg_isready -h localhost -p 5432 -U admin; do
     echo "Waiting for PostgreSQL to be ready..."
     sleep 2
 done
 
+# Assign the database variables based on the NODE_ENV environment variable
 if [ "$NODE_ENV" = "test" ]; then
     DB_USER=$TEST_DB_USER
     DB_PASSWORD=$TEST_DB_PASSWORD
