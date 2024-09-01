@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "docker": "docker-compose up -d",
-    "docker:dev": "pnpm docker && cross-env NODE_ENV=development ./scripts/init_db.sh && ts-node ./scripts/seedDb.ts",
-    "docker:test": "pnpm docker && cross-env NODE_ENV=test ./scripts/init_db.sh",
+    "docker:dev": "pnpm docker && cross-env NODE_ENV=development ./scripts/init_dbs.sh && ts-node ./scripts/seed_dev_db.ts",
+    "docker:test": "pnpm docker && cross-env NODE_ENV=test ./scripts/init_dbs.sh",
     "dev": "pnpm docker:dev && nodemon src/index.ts",
     "start": "pnpm build && cross-env NODE_ENV=production node dist/index.js",
     "build": "echo 'Building backend...' && tsc",
     "test": "pnpm docker:test && jest --coverage --detectOpenHandles"
   },
   "dependencies": {
+    "class-sanitizer": "^1.0.1",
+    "class-validator": "^0.14.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
